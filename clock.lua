@@ -2,12 +2,6 @@ require 'cairo'
 
 require 'widgets'
 
---[[
-for k,v in pairs(os) do
-  print(k .. "=" .. tostring(v))
-end
---]]--
-
 lastTime = nil
 lastUpdates = nil
 
@@ -46,17 +40,13 @@ function conky_draw_lines()
         --                       val   x    y   startAngle   angleWidth  sRad radW linW color bgColor brdColr pad ePad brd
         drawRoundline(cr, h_num / 24, 100, 150, deg2rad(-90), deg2rad(360), 35, 15, -1, color, bgColor, brdColor, 1, 0, 1)
         
-        --                       val   x    y   startAngle   angleWidth  sRad radW linW color bgColor brdColr pad ePad brd
         drawRoundline(cr, m_num / 60, 100, 150, deg2rad(-90), deg2rad(360), 50, 15, -1, color, bgColor, brdColor, 1, 0, 1)
         
-        --                       val   x    y   startAngle   angleWidth  sRad radW linW color bgColor brdColr pad ePad brd
         drawRoundline(cr, s_num / 60, 100, 150, deg2rad(-90), deg2rad(360), 65, 15, -1, color, bgColor, brdColor, 1, 0, 1)
 
 
         local txt = string.format("%02d:%02d:%02.1f", h_num, m_num, s_num)
         drawLabel(cr, txt, 65, 155, 0, color)        
-
-        
     end
 end
 

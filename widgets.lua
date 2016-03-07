@@ -111,35 +111,10 @@ local function drawRectBorder(cr, w, h, borderColor, borderWidth, preserve)
 end
 
 function drawBar(cr, val, x, y, angle, w, h, color, bgColor, borderColor, padding, border)
-    --[[
-    cairo_save(cr)
-    cairo_translate(cr, x, y)
-    cairo_rotate(cr, angle)
-    --]]--
     saveTranslateAndRotate(cr, x, y, angle)
     
-    -- border
-    --[[
-    cairo_set_source_rgba(cr, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
-    cairo_set_line_width (cr, border);
---    cairo_move_to(cr, x, y);
-    cairo_move_to(cr, 0, 0);
-    cairo_rel_line_to(cr, 0, h);
-    cairo_rel_line_to(cr, w, 0);
-    cairo_rel_line_to(cr, 0, -h);
-    cairo_rel_line_to(cr, -w, 0);
-    cairo_rel_line_to(cr, 0, 0.1);
-    cairo_stroke_preserve(cr);
-    --]]--
     drawRectBorderAndBackground(cr, w, h, borderColor, border, true, bgColor)
-    --[[
-    drawRectBorder(cr, w, h, borderColor, border, true)
-    -- background
-    cairo_set_source_rgba (cr, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
-    cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
-    cairo_fill(cr);
-    cairo_set_operator(cr, CAIRO_OPERATOR_OVER);
-    ]]--
+
     -- indicator
     cairo_set_source_rgba(cr, color.r, color.g, color.b, color.a);
     local offset = 2 * padding

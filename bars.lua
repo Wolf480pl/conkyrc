@@ -52,7 +52,10 @@ function conky_draw_lines()
         local h_num=tonumber(h_arg)
         drawBarWithPercent(cr, h_arg, 253, 111, 0, 13, -103, color, bgColor, color, 1.5, 1)
         
-        drawRoundline(cr, d_num / 100, 100, 180, deg2rad(180), 4, 30, 15, -1, color, bgColor, color, 2, 2, 1)
-        drawLabel(cr, d_arg .. "%", 55, 195, 0, color)
+        total_arg = conky_parse("${cpu}")
+        total_num = tonumber(total_arg)
+
+        drawRoundline(cr, total_num / 100, 100, 180, deg2rad(180), 4, 30, 15, -1, color, bgColor, color, 2, 2, 1)
+        drawLabel(cr, total_arg .. "%", 55, 195, 0, color)
     end
 end

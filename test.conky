@@ -1,0 +1,56 @@
+alignment bottom_right
+#default_color 77FF00
+default_color 00FFFF
+# With XFT fonts look like they should.
+use_xft yes
+# Font to use
+xftfont DejaVu Sans Mono:size=8
+
+draw_shades no
+
+minimum_size 150 350
+# We want Conky to create its own window.
+own_window yes
+# Window class, in case we wanted a window manager to do some fancy tricks with this window.
+own_window_class Conky
+# Window type: normal, so that we are able to move the window holding alt
+own_window_type normal
+# Semi-transparent background (works only with compoziting window managers)
+own_window_argb_visual yes
+own_window_argb_value 128
+#own_window_colour 003333
+own_window_colour 000000
+# Hints for window manager:
+#  above - stay on top
+#  undecorated - we don't want any title bar or frame
+#  skip_taskbar,skip_pager - don't show up on taskbar and in workspace switcher
+#  sticky - present in all workspaces
+own_window_hints above,undecorated,skip_taskbar,skip_pager,sticky
+# Use double buffer to avoid flickering
+double_buffer yes
+update_interval 1
+
+TEXT
+${font DejaVu Sans Mono:size=8}$time
+# asiekierka: ${alignr}${font :size=8:bold}${execp twitch-status.sh -c asiekierka}${font :size=8}${color}
+fan: ${acpifan}
+temp: ${acpitemp}
+enp5s0: ${addrs enp5s0}
+lo: ${addrs lo}
+CPU temp: ${adt746xcpu}
+fan temp: ${adt746xfan}
+buffers: ${buffers}
+cache: ${cached}
+${cpugraph}
+${entropy_avail}
+${entropy_bar}
+${fs_bar /}
+temp phys1: ${hwmon 1 temp 1}
+temp core0: ${hwmon 1 temp 2}
+temp core1: ${hwmon 1 temp 3}
+${ioscheduler sda}
+
+sda: ${diskiograph sda}
+sdb: ${diskiograph sdb}
+sdc: ${diskiograph sdc}
+sdd: ${diskiograph sdd}
